@@ -1,0 +1,152 @@
+<MainWindow>:
+    pathToFile: pathR
+    AnchorLayout:
+        rows:3
+        canvas:
+            Color:
+                rgba: 1,.5,.5,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        FloatLayout:
+
+
+            Label:
+                text: "select the path to the file you want to chop"
+            TextInput:
+                on_text_validate: root.submit()
+                font_size: 20
+                size_hint: .4,.05
+                pos_hint: {'x':.3 , 'y':.4 }
+                id: pathR
+                multiline: False
+            Button:
+                text: "..."
+                size_hint: .05,.05
+                pos_hint: {'x':.7 , 'y':.4 }
+                on_release: root.pickFile()
+
+            Button:
+                pos_hint: {'right':1 , 'bottom':1 }
+                text: "Submit"
+                size_hint: .1, .1
+                on_release: root.submit()
+
+<SecondWindow>:
+    pathToFolder: pathF
+    AnchorLayout:
+        rows:3
+        canvas:
+            Color:
+                rgba: 1,.5,.5,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        FloatLayout:
+
+
+            Label:
+                text: "Please select an empty temporary directory"
+            TextInput:
+                on_text_validate: root.submit()
+                font_size: 20
+                size_hint: .4,.05
+                pos_hint: {'x':.3 , 'y':.4 }
+                id: pathF
+                multiline: False
+            Button:
+                text: "..."
+                size_hint: .05,.05
+                pos_hint: {'x':.7 , 'y':.4 }
+                on_release: root.pickFile()
+
+            Button:
+                pos_hint: {'right':1 , 'bottom':1 }
+                text: "Submit"
+                size_hint: .1, .1
+                on_release: root.submit()
+<ThirdWindow>:
+    startButton: startButton
+    AnchorLayout:
+        id: ALayout
+        rows:3
+        canvas:
+            Color:
+                rgba: 1,.5,.5,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        FloatLayout:
+            id:FLayout
+
+            Label:
+                text: "Press start to chop your file(may take a moment)"
+
+            Button:
+                id:startButton
+                text: "START"
+                size_hint: .2, .1
+                pos_hint: {'x':.4 , 'y':.35 }
+                on_release: root.unpackFile()
+            Button:
+                pos_hint: {'right':1 , 'bottom':1 }
+                text: "Submit"
+                size_hint: .1, .1
+                on_release: root.submit()
+<FourthWindow>:
+    pathToFolder: pathF
+    AnchorLayout:
+        rows:3
+        canvas:
+            Color:
+                rgba: 1,.5,.5,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        FloatLayout:
+
+
+            Label:
+                text: "Please select a directory to put your finished file"
+            TextInput:
+                on_text_validate: root.submit()
+                font_size: 20
+                size_hint: .4,.05
+                pos_hint: {'x':.3 , 'y':.4 }
+                id: pathF
+                multiline: False
+            Button:
+                text: "..."
+                size_hint: .05,.05
+                pos_hint: {'x':.7 , 'y':.4 }
+                on_release: root.pickFile()
+
+            Button:
+                pos_hint: {'right':1 , 'bottom':1 }
+                text: "Submit"
+                size_hint: .1, .1
+                on_release: root.submit()
+<FifthWindow>:
+    startButton: startButton
+    AnchorLayout:
+        id: ALayout
+        rows:3
+        canvas:
+            Color:
+                rgba: 1,.5,.5,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        FloatLayout:
+            id:FLayout
+
+            Label:
+                text: "Press start turn your chopped files back into a new file(may take a moment)"
+
+            Button:
+                id:startButton
+                text: "START"
+                size_hint: .2, .1
+                pos_hint: {'x':.4 , 'y':.35 }
+                on_release: root.packFile()
+
