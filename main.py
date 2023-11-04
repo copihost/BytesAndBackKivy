@@ -129,7 +129,6 @@ screens = [MainWindow(name="main"), SecondWindow(name="second"),
            ThirdWindow(name="third"), FourthWindow(name='fourth'),FifthWindow(name="fifth")]
 
 for screen in screens:
-
     sm.add_widget(screen)
 
 sm.current = 'main'
