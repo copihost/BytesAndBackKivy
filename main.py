@@ -18,11 +18,8 @@ class MainWindow(Screen):
 
     def submit(self):
         if self.pathToFile.text != "":
-            try:
-                b.openFile(self.pathToFile.text)
-                sm.current = "second"
-            except:
-                invalidPath()
+            b.filePath = self.pathToFile.text
+            sm.current = "second"
         else:
             invalidPath()
 
@@ -38,11 +35,9 @@ class SecondWindow(Screen):
 
     def submit(self):
         if self.pathToFolder.text != "":
-            try:
-                b.openDest(self.pathToFolder.text)
+                b.storagePath = self.pathToFolder.text
+                b.destPath = self.pathToFolder.text
                 sm.current = "third"
-            except:
-                invalidPath()
         else:
             invalidPath()
     def pickFile(self):
@@ -79,11 +74,8 @@ class FourthWindow(Screen):
 
     def submit(self):
         if self.pathToFolder.text != "":
-            try:
-                b.openDest(self.pathToFolder.text)
+                b.destPath = self.pathToFolder.text
                 sm.current = "fifth"
-            except:
-                invalidPath()
         else:
             invalidPath()
     def pickFile(self):
