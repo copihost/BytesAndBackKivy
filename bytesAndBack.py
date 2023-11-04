@@ -13,7 +13,7 @@ class BytesAndBack():
         self.destPath = ""
 
     def unpackFile(self, progressBarImport):
-        self.barSize = math.ceil(os.path.getsize(self.filePath) / 1048576)
+        self.barSize = math.ceil(os.path.getsize(self.filePath) / self.CHUNK_SIZE)
         fi = open(self.filePath, 'rb')
         chunk = fi.read(self.CHUNK_SIZE)
         iterations = 0
@@ -39,7 +39,7 @@ class BytesAndBack():
                 self.loopback = True
         fi.close()
 
-    def packFile(self, progressBarImport):
+    def packFile(self, progressBarImport, deleteFiles):
         self.progressPercent = 0
         suffix = self.filePath.split('.')[-1]
         iterations = 0
@@ -59,5 +59,5 @@ class BytesAndBack():
                     if hashBi == testBiFormatted:
                         cur_file.seek(32)
                         destFile.write(cur_file.read())
-
-                os.remove(f'{self.storagePath}/{entry}')
+                if deleteFiles:
+                    os.remove(f'{self.storagePath}/{entry}')

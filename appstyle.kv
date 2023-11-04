@@ -1,4 +1,4 @@
-<MainWindow>:
+<FirstWindow>:
     pathToFile: pathR
     AnchorLayout:
         rows:3
@@ -139,6 +139,15 @@
                 size: self.size
         FloatLayout:
             id:FLayout
+            Label:
+                text: "delete temporary files?:"
+                size: 20, 50
+                pos_hint: {'x':0 , 'y': .05}
+            CheckBox:
+                pos_hint: {'x':.58 , 'y':.523 }
+                color: 0,0,0,1
+                size_hint: .05, .05
+                on_active: root.delfiles(self, self.active)
 
             Label:
                 text: "Press start turn your chopped files back into a new file(may take a moment)"

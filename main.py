@@ -10,8 +10,7 @@ from kivy.uix.progressbar import ProgressBar
 from threading import Thread
 BNBClass = BytesAndBack()
 
-
-class MainWindow(Screen):
+class FirstWindow(Screen):
 
     pathToFile = ObjectProperty(None)
 
@@ -93,10 +92,16 @@ class FifthWindow(Screen):
         super(FifthWindow, self).__init__(**kwargs)
 
     def packFile(self):
-        t1 = Thread(target=BNBClass.packFile, args=(self.prog,))
+        t1 = Thread(target=BNBClass.packFile, args=(self.prog,self.check,))
         t1.start()
         self.ids.FLayout.add_widget(self.prog)
         hide_widget(self.startButton)
+    
+    def delfiles(self, instance, value):
+        if value == True:
+            self.check = True
+        else:
+            self.check = False
         
 
 def hide_widget(wid, dohide=True):
@@ -125,13 +130,13 @@ sm = WindowManager()
 kv = Builder.load_file("appstyle.kv")
 
 
-screens = [MainWindow(name="main"), SecondWindow(name="second"), 
+screens = [FirstWindow(name="first"), SecondWindow(name="second"), 
            ThirdWindow(name="third"), FourthWindow(name='fourth'),FifthWindow(name="fifth")]
 
 for screen in screens:
     sm.add_widget(screen)
 
-sm.current = 'main'
+sm.current = 'first'
 
 
 class MyMainApp(App):
