@@ -12,14 +12,6 @@ class BytesAndBack():
         self.progressPercent = 0
         self.destPath = ""
 
-    def getPercent(self,listToUpdate):
-        while self.progressPercent < 99:
-            listToUpdate[0] = self.progressPercent
-
-    def openFile(self, fPath: str):
-        self.filePath = fPath
-            
-
     def unpackFile(self, progressBarImport):
         self.barSize = math.ceil(os.path.getsize(self.filePath) / 1048576)
         fi = open(self.filePath, 'rb')
